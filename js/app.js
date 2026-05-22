@@ -106,7 +106,7 @@ function eindSpel() {
     spelBezig = false;
     var moeilijkheid = document.getElementById("moeilijkheid").value;
     document.getElementById("vraag").textContent = "";
-    document.getElementById("vraagNummer").textContent "";
+    document.getElementById("vraagNummer").textContent = "";
     document.getElementById("hint").textContent = "";
     document.getElementById("boodschap").textContent = "Quiz afgelopen! Jouw score: " + score + " punten!";
 
