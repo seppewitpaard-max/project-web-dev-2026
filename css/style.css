@@ -1,0 +1,232 @@
+/* Algemene stijl */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+/* Header */
+header {
+    background-color: #cc0000;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header img {
+    height: 60px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Navigatie */
+nav {
+    background-color: #3b4cca;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #222;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #ffde00;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+/* Main */
+main {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+main h2 {
+    margin-bottom: 20px;
+    color: #cc0000;
+}
+
+main h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #3b4cca;
+}
+
+main img {
+    width: 200px;
+    margin: 20px 0;
+    display: block;
+}
+
+/* Quiz zone */
+#quizZone {
+    background-color: white;
+    border: 2px solid #3b4cca;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#vraagNummer {
+    color: #3b4cca;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#vraag {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#hint {
+    color: #cc0000;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+#boodschap {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #cc0000;
+}
+
+#score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3b4cca;
+    margin-top: 10px;
+}
+
+/* Formulierelementen */
+input, select {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #3b4cca;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffde00;
+    color: #222;
+}
+
+label {
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+/* Scoretabel */
+#scoreTabel {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#scoreTabel th, #scoreTabel td {
+    border: 2px solid #3b4cca;
+    padding: 10px;
+    text-align: left;
+}
+
+#scoreTabel th {
+    background-color: #3b4cca;
+    color: white;
+}
+
+#scoreTabel tr:nth-child(2) td {
+    background-color: #ffde00;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #3b4cca;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+footer th, footer td {
+    border: 1px solid #ffde00;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    input, select, button {
+        max-width: 100%;
+    }
+}
+
+/* Mobiel */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    input, select, button {
+        max-width: 100%;
+    }
+
+    #scoreTabel {
+        font-size: 0.8rem;
+    }
+}

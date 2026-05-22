@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Spel</title>
+    <title>Pokémon Quiz Spel</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <!-- Header met logo en titel -->
     <header>
         <img src="../media/logo.png" alt="Pokémon Logo">
-        <h1>Pokémon Website</h1>
+        <h1>Pokémon Kanto Quiz</h1>
     </header>
 
     <!-- Navigatie -->
@@ -22,7 +22,7 @@
 
     <!-- Spel -->
     <main>
-        <h2>Pokémon Raadspel</h2>
+        <h2>Pokémon Kanto Quiz</h2>
 
         <!-- Interactief element 1: invoerveld naam -->
         <label for="spelersnaam">Jouw naam:</label>
@@ -31,32 +31,45 @@
         <!-- Interactief element 2: dropdown moeilijkheid -->
         <label for="moeilijkheid">Moeilijkheidsgraad:</label>
         <select id="moeilijkheid">
-            <option value="makkelijk">Makkelijk</option>
-            <option value="normaal">Normaal</option>
-            <option value="moeilijk">Moeilijk</option>
+            <option value="makkelijk">Makkelijk — 5 vragen</option>
+            <option value="normaal">Normaal — 10 vragen</option>
+            <option value="moeilijk">Moeilijk — 15 vragen</option>
         </select>
 
         <!-- Interactief element 3: checkbox hints -->
         <label>
-            <input type="checkbox" id="geluidsCheckbox"> Hints tonen
+            <input type="checkbox" id="hintsCheckbox"> Hints tonen
         </label>
 
         <!-- Interactief element 4: startknop -->
-        <button id="startKnop">Start spel</button>
+        <button id="startKnop">Start Quiz</button>
 
-        <!-- Spel zone -->
-        <div id="spelZone">
+        <!-- Quiz zone -->
+        <div id="quizZone">
+            <p id="vraagNummer"></p>
+            <p id="vraag"></p>
             <p id="hint"></p>
-            <input type="text" id="antwoord" placeholder="Welke Pokémon is dit?">
-            <button id="raadKnop">Raad!</button>
+            <input type="text" id="antwoord" placeholder="Typ je antwoord...">
+            <button id="bevestigKnop">Bevestig</button>
         </div>
 
         <!-- Interactief element 5: resetknop -->
-        <button id="resetKnop">Reset spel</button>
+        <button id="resetKnop">Reset Quiz</button>
 
         <!-- Output -->
         <p id="boodschap"></p>
         <p id="score">Score: 0</p>
+
+        <!-- Scoretabel -->
+        <h3>Scorebord</h3>
+        <table id="scoreTabel">
+            <tr>
+                <th>Rang</th>
+                <th>Naam</th>
+                <th>Score</th>
+                <th>Moeilijkheid</th>
+            </tr>
+        </table>
 
     </main>
 
