@@ -21,14 +21,14 @@ var vragen = [
     { vraag: "Hoe heet het stadion van AC Milan?", antwoord: "san siro", hint: "Ze delen het met Inter Milan" },
     { vraag: "In welk jaar werd AC Milan opgericht?", antwoord: "1899", hint: "Einde van de 19e eeuw" },
     { vraag: "Welke Nederlandse aanvaller speelde voor AC Milan in de jaren 90?", antwoord: "marco van basten", hint: "Hij won 3x de Ballon d'Or" },
-    { vraag: "Wie scoorde 10 goals voor Milan in de CL van 2007?", antwoord: "kaka", hint: "Braziliaanse middenvelder" },
+    { vraag: "Wie scoorde 2 goals voor Milan in de CL finale van 2007?", antwoord: "inzaghi", hint: "Italiaanse spits" },
     { vraag: "Tegen welke club won Milan de CL finale van 2003?", antwoord: "juventus", hint: "Een andere Italiaanse club" },
     { vraag: "Hoeveel jaar speelde Paolo Maldini voor AC Milan?", antwoord: "24", hint: "Meer dan 20 jaar" },
     { vraag: "In welke stad ligt het stadion van AC Milan?", antwoord: "milaan", hint: "De naam van de club geeft het weg" },
     { vraag: "Welke kleur shirt draagt AC Milan thuis?", antwoord: "rood zwart", hint: "Twee kleuren in verticale strepen" },
     { vraag: "Tegen welke club won Milan de CL finale van 2007?", antwoord: "liverpool", hint: "Een Engelse club" },
     { vraag: "Welke Oekrainse aanvaller won de Ballon d'Or in 2004?", antwoord: "shevchenko", hint: "Hij speelde van 1999 tot 2006 voor Milan" },
-    { vraag: "Hoeveel goals scoorde Van Basten in zijn carrière bij Milan?", antwoord: "200", hint: "Meer dan 150" }
+    { vraag: "Welke middenvelder van Milan won nooit de Ballon d'Or maar werd beschouwd als beste speler van 2006?", antwoord: "pirlo", hint: "Italiaanse spelmaker" }
 ];
 
 // Variabelen
@@ -39,6 +39,26 @@ var spelersnaam = "";
 var spelBezig = false;
 var scoreBord = [];
 var gebruikteIndexen = [];
+
+// Functie: controleer of antwoord ongeveer klopt
+function controleerGelijkenis(antwoord, juist) {
+    // Exact juist
+    if (antwoord === juist) {
+        return true;
+    }
+    // Antwoord zit in juist antwoord of omgekeerd
+    if (juist.includes(antwoord) || antwoord.includes(juist)) {
+        return true;
+    }
+    // Controleer elk woord apart
+    var juisteWoorden = juist.split(" ");
+    for (var i = 0; i < juisteWoorden.length; i++) {
+        if (juisteWoorden[i].length > 3 && antwoord.includes(juisteWoorden[i])) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // Functie: surprise knop
 function toonFeitje() {
@@ -120,10 +140,10 @@ function controleerAntwoord() {
     var boodschap = document.getElementById("boodschap");
     var scoreElement = document.getElementById("score");
 
-    // Controlestructuur: juist of fout
-    if (antwoord === juistAntwoord) {
+    // Controlestructuur: juist of fout via gelijkenis check
+    if (controleerGelijkenis(antwoord, juistAntwoord)) {
         score = score + 10;
-        boodschap.textContent = "Juist! +10 punten!";
+        boodschap.textContent = "Juist! +10 punten! Het antwoord was: " + juistAntwoord;
         scoreElement.textContent = "Score: " + score;
     } else {
         boodschap.textContent = "Fout! Het juiste antwoord was: " + juistAntwoord;
