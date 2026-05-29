@@ -7,13 +7,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-image: url('../media/achtergrond.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #222;
 }
 
 /* Header */
 header {
-    background-color: #cc0000;
+    background-color: rgba(204, 0, 0, 0.9);
     color: white;
     padding: 20px;
     display: flex;
@@ -31,7 +34,7 @@ header h1 {
 
 /* Navigatie */
 nav {
-    background-color: #3b4cca;
+    background-color: rgba(59, 76, 202, 0.9);
     display: flex;
     gap: 10px;
     padding: 10px 20px;
@@ -61,12 +64,14 @@ main {
 main h2 {
     margin-bottom: 20px;
     color: #cc0000;
+    text-shadow: 1px 1px 3px white;
 }
 
 main h3 {
     margin-top: 30px;
     margin-bottom: 10px;
     color: #3b4cca;
+    text-shadow: 1px 1px 3px white;
 }
 
 main img {
@@ -75,9 +80,17 @@ main img {
     display: block;
 }
 
+/* Witte achtergrond achter inhoud zodat tekst leesbaar blijft */
+main > * {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 /* Quiz zone */
 #quizZone {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     border: 2px solid #3b4cca;
     border-radius: 8px;
     padding: 20px;
@@ -125,6 +138,7 @@ input, select {
     max-width: 400px;
     border: 2px solid #3b4cca;
     border-radius: 4px;
+    background-color: white;
 }
 
 button {
@@ -175,7 +189,7 @@ label {
 
 /* Footer */
 footer {
-    background-color: #3b4cca;
+    background-color: rgba(59, 76, 202, 0.9);
     color: white;
     padding: 20px;
     margin-top: 40px;
