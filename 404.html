@@ -10,61 +10,33 @@
             text-align: center;
             padding: 60px 20px;
         }
-
         .fout-zone h2 {
             font-size: 8rem;
             color: #cc0000;
             margin: 0;
         }
-
         .fout-zone h3 {
             font-size: 2rem;
-            color: #3b4cca;
+            color: #222;
             margin: 10px 0;
         }
-
         .fout-zone p {
             font-size: 1.2rem;
             margin: 20px 0;
         }
-
-        .pokeball {
+        .bal {
             width: 150px;
             height: 150px;
-            background: linear-gradient(to bottom, #cc0000 50%, white 50%);
+            background: radial-gradient(circle at 35% 35%, #fff 0%, #ddd 60%, #aaa 100%);
             border-radius: 50%;
-            border: 5px solid #222;
+            border: 3px solid #222;
             margin: 30px auto;
-            position: relative;
-            animation: draaien 2s linear infinite;
+            animation: stuiteren 1s ease-in-out infinite alternate;
         }
-
-        .pokeball-midden {
-            width: 30px;
-            height: 30px;
-            background-color: white;
-            border-radius: 50%;
-            border: 5px solid #222;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        @keyframes stuiteren {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-40px); }
         }
-
-        .pokeball-lijn {
-            width: 100%;
-            height: 5px;
-            background-color: #222;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        @keyframes draaien {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .fout-zone a button {
             font-size: 1.2rem;
             padding: 15px 30px;
@@ -74,37 +46,32 @@
 </head>
 <body>
 
-    <!-- Header met logo en titel -->
+    <!-- Header -->
     <header>
-        <img src="media/logo.png" alt="Pokémon Logo">
-        <h1>Pokémon Type Quiz</h1>
+        <img src="media/logo.png" alt="AC Milan Logo">
+        <h1>AC Milan — Champions League</h1>
     </header>
 
     <!-- Navigatie -->
     <nav>
         <a href="index.html">Home</a>
-        <a href="html/game.html">Spel</a>
+        <a href="html/spelers.html">Spelers</a>
+        <a href="html/quiz.html">Quiz</a>
     </nav>
 
     <!-- Foutboodschap -->
     <main>
         <div class="fout-zone">
             <h2>404</h2>
-            <h3>Oeps! Pagina niet gevonden!</h3>
-
-            <!-- Animerende Pokéball -->
-            <div class="pokeball">
-                <div class="pokeball-lijn"></div>
-                <div class="pokeball-midden"></div>
-            </div>
-
-            <p>Het lijkt erop dat deze pagina gevangen is door Team Rocket...</p>
-            <p>Misschien heb je een foute URL ingegeven?</p>
+            <h3>Pagina niet gevonden!</h3>
+            <div class="bal"></div>
+            <p>Deze pagina is buiten het veld geschoten...</p>
+            <p>Ga terug naar de hoofdpagina!</p>
             <a href="index.html"><button>Terug naar home</button></a>
         </div>
     </main>
 
-    <!-- Footer met schooladres -->
+    <!-- Footer -->
     <footer>
         <table>
             <tr>

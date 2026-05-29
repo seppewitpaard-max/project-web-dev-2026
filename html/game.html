@@ -3,49 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Quiz Spel</title>
+    <title>AC Milan Quiz</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
-    <!-- Header met logo en titel -->
+    <!-- Header -->
     <header>
-        <img src="../media/logo.png" alt="Pokémon Logo">
-        <h1>Pokémon Kanto Quiz</h1>
+        <img src="../media/logo.png" alt="AC Milan Logo">
+        <h1>AC Milan — Champions League</h1>
     </header>
 
     <!-- Navigatie -->
     <nav>
         <a href="../index.html">Home</a>
-        <a href="game.html">Spel</a>
+        <a href="spelers.html">Spelers</a>
+        <a href="quiz.html">Quiz</a>
     </nav>
 
-    <!-- Spel -->
+    <!-- Quiz -->
     <main>
-        <h2>Pokémon Kanto Quiz</h2>
+        <div class="kaart">
+            <h2>AC Milan Champions League Quiz</h2>
 
-        <!-- Interactief element 1: invoerveld naam -->
-        <label for="spelersnaam">Jouw naam:</label>
-        <input type="text" id="spelersnaam" placeholder="Typ je naam...">
+            <!-- Interactief element 1: invoerveld naam -->
+            <label for="spelersnaam">Jouw naam:</label>
+            <input type="text" id="spelersnaam" placeholder="Typ je naam...">
 
-        <!-- Interactief element 2: dropdown moeilijkheid -->
-        <label for="moeilijkheid">Moeilijkheidsgraad:</label>
-        <select id="moeilijkheid">
-            <option value="makkelijk">Makkelijk — 5 vragen</option>
-            <option value="normaal">Normaal — 10 vragen</option>
-            <option value="moeilijk">Moeilijk — 15 vragen</option>
-        </select>
+            <!-- Interactief element 2: dropdown aantal vragen -->
+            <label for="aantalVragen">Aantal vragen:</label>
+            <select id="aantalVragen">
+                <option value="5">5 vragen</option>
+                <option value="10">10 vragen</option>
+                <option value="15">15 vragen</option>
+            </select>
 
-        <!-- Interactief element 3: checkbox hints -->
-        <label>
-            <input type="checkbox" id="hintsCheckbox"> Hints tonen
-        </label>
+            <!-- Interactief element 3: checkbox hints -->
+            <label>
+                <input type="checkbox" id="hintsCheckbox"> Toon hints
+            </label>
 
-        <!-- Interactief element 4: startknop -->
-        <button id="startKnop">Start Quiz</button>
+            <!-- Interactief element 4: startknop -->
+            <button id="startKnop">Start Quiz</button>
+        </div>
 
         <!-- Quiz zone -->
-        <div id="quizZone">
+        <div id="quizZone" class="kaart">
             <p id="vraagNummer"></p>
             <p id="vraag"></p>
             <p id="hint"></p>
@@ -54,26 +57,28 @@
         </div>
 
         <!-- Interactief element 5: resetknop -->
-        <button id="resetKnop">Reset Quiz</button>
+        <div class="kaart">
+            <button id="resetKnop">Reset Quiz</button>
+            <p id="boodschap"></p>
+            <p id="score">Score: 0</p>
+        </div>
 
-        <!-- Output -->
-        <p id="boodschap"></p>
-        <p id="score">Score: 0</p>
-
-        <!-- Scoretabel -->
-        <h3>Scorebord</h3>
-        <table id="scoreTabel">
-            <tr>
-                <th>Rang</th>
-                <th>Naam</th>
-                <th>Score</th>
-                <th>Moeilijkheid</th>
-            </tr>
-        </table>
+        <!-- Scorebord -->
+        <div class="kaart">
+            <h3>Scorebord</h3>
+            <table id="scoreTabel">
+                <tr>
+                    <th>Rang</th>
+                    <th>Naam</th>
+                    <th>Score</th>
+                    <th>Vragen</th>
+                </tr>
+            </table>
+        </div>
 
     </main>
 
-    <!-- Footer met schooladres -->
+    <!-- Footer -->
     <footer>
         <table>
             <tr>
@@ -82,14 +87,13 @@
                 <th>Stad</th>
             </tr>
             <tr>
-                <td>Jouw School</td>
+                <td>Campus Het Spoor</td>
                 <td>Schoolstraat 1</td>
                 <td>9000 Gent</td>
             </tr>
         </table>
     </footer>
 
-    <!-- JavaScript koppelen -->
     <script src="../js/app.js"></script>
 
 </body>

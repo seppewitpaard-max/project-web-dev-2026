@@ -3,32 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Quiz</title>
+    <title>AC Milan — Champions League</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Header met logo en titel -->
+    <!-- Header -->
     <header>
-        <img src="media/logo.png" alt="Pokémon Logo">
-        <h1>Pokémon Kanto Quiz</h1>
+        <img src="media/logo.png" alt="AC Milan Logo">
+        <h1>AC Milan — Champions League</h1>
     </header>
 
     <!-- Navigatie -->
     <nav>
         <a href="index.html">Home</a>
-        <a href="html/game.html">Spel</a>
+        <a href="html/spelers.html">Spelers</a>
+        <a href="html/quiz.html">Quiz</a>
     </nav>
 
     <!-- Hoofdinhoud -->
     <main>
-        <h2>Welkom op de Pokémon Kanto Quiz!</h2>
-        <p>Test jouw kennis over de Kanto regio! Beantwoord vragen over Pokémon, gym leaders, moves en meer!</p>
-        <img src="media/logo.png" alt="Pokémon afbeelding">
-        <a href="html/game.html"><button>Speel nu!</button></a>
+        <div class="kaart">
+            <h2>Welkom op de AC Milan Fan Website!</h2>
+            <p>AC Milan is één van de succesvolste voetbalclubs ter wereld met 7 Champions League titels. Ontdek alles over hun legendarische prestaties!</p>
+        </div>
+
+        <div class="kaart">
+            <h2>Champions League Geschiedenis</h2>
+            <p>AC Milan won de Champions League in: 1963, 1969, 1989, 1990, 1994, 2003 en 2007. Ze zijn daarmee de tweede meest succesvolle club in de geschiedenis van het toernooi.</p>
+        </div>
+
+        <div class="kaart">
+            <h2>Surprise!</h2>
+            <p>Klik op de knop voor een leuk feitje over AC Milan!</p>
+            <button id="surpriseKnop">🎲 Surprise!</button>
+            <p id="feitje"></p>
+        </div>
+
+        <div class="kaart">
+            <a href="html/quiz.html"><button>Speel de Quiz!</button></a>
+        </div>
     </main>
 
-    <!-- Footer met schooladres -->
+    <!-- Footer -->
     <footer>
         <table>
             <tr>
@@ -37,12 +54,14 @@
                 <th>Stad</th>
             </tr>
             <tr>
-                <td>Jouw School</td>
+                <td>Campus Het Spoor</td>
                 <td>Schoolstraat 1</td>
                 <td>9000 Gent</td>
             </tr>
         </table>
     </footer>
+
+    <script src="js/app.js"></script>
 
 </body>
 </html>

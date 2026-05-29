@@ -1,123 +1,153 @@
-// app.js — Pokémon Kanto Quiz logica
+// app.js — AC Milan Champions League Quiz logica
 
-// Datastructuur: lijst van vragen over Kanto
+// Datastructuur: feitjes voor de surprise knop
+var feitjes = [
+    "AC Milan werd opgericht op 16 december 1899!",
+    "Het San Siro stadion heeft een capaciteit van 75.923 toeschouwers!",
+    "AC Milan heeft 7 Champions League titels gewonnen!",
+    "Paolo Maldini speelde 902 officiële wedstrijden voor AC Milan!",
+    "AC Milan won in 1989 de CL met 4-0 van Steaua Boekarest!",
+    "Kaká scoorde 10 goals in de Champions League van 2006-2007!",
+    "AC Milan en Inter Milan delen het San Siro stadion!",
+    "Marco van Basten won 3 keer de Ballon d'Or als Milan speler!"
+];
+
+// Datastructuur: quizvragen over AC Milan en Champions League
 var vragen = [
-    { vraag: "Wat is het eerste Pokemon dat je krijgt in Kanto?", antwoord: "bulbasaur", hint: "Dit Pokemon is groen" },
-    { vraag: "Wie is de eerste gym leader in Kanto?", antwoord: "brock", hint: "Hij gebruikt rots Pokemon" },
-    { vraag: "Wat is de hoofdstad van Kanto?", antwoord: "pallet town", hint: "Hier begint je avontuur" },
-    { vraag: "Wie is de leider van Team Rocket?", antwoord: "giovanni", hint: "Hij is ook de achtste gym leader" },
-    { vraag: "Welk Pokemon evolueert met een watersteen?", antwoord: "staryu", hint: "Dit Pokemon heeft een ster vorm" },
-    { vraag: "Wat is het type van Snorlax?", antwoord: "normaal", hint: "Dit Pokemon slaapt altijd" },
-    { vraag: "Wie is de vijfde gym leader in Kanto?", antwoord: "koga", hint: "Hij gebruikt gif Pokemon" },
-    { vraag: "Wat is het evolutie van Magikarp?", antwoord: "gyarados", hint: "Dit Pokemon is een draak" },
-    { vraag: "Welk Pokemon heeft het nummer 001 in de Pokedex?", antwoord: "bulbasaur", hint: "Dit Pokemon is groen met een bol op zijn rug" },
-    { vraag: "Wat is de stad waar je de SS Anne vindt?", antwoord: "vermilion city", hint: "Hier is ook de derde gym" },
-    { vraag: "Wie is de zevende gym leader in Kanto?", antwoord: "blaine", hint: "Hij gebruikt vuur Pokemon" },
-    { vraag: "Wat is het type van Gastly?", antwoord: "geest", hint: "Dit Pokemon is een spook" },
-    { vraag: "Welk Pokemon beschermt de Safari Zone?", antwoord: "kangaskhan", hint: "Dit Pokemon draagt haar kind bij zich" },
-    { vraag: "Wat is de evolutie van Slowpoke?", antwoord: "slowbro", hint: "Dit Pokemon heeft een Shellder op zijn staart" },
-    { vraag: "Wie is de Elite Four die ijsPokemon gebruikt?", antwoord: "lorelei", hint: "Ze is een vrouw" }
+    { vraag: "Hoeveel keer won AC Milan de Champions League?", antwoord: "7", hint: "Meer dan 5 maar minder dan 10" },
+    { vraag: "In welk jaar won AC Milan hun eerste Champions League?", antwoord: "1963", hint: "Begin jaren 60" },
+    { vraag: "Wie was de aanvoerder van AC Milan in de jaren 90?", antwoord: "franco baresi", hint: "Een legendarische verdediger" },
+    { vraag: "Welke speler won de Ballon d'Or in 2007 als Milan speler?", antwoord: "kaka", hint: "Een Braziliaanse middenvelder" },
+    { vraag: "Hoe heet het stadion van AC Milan?", antwoord: "san siro", hint: "Ze delen het met Inter Milan" },
+    { vraag: "In welk jaar werd AC Milan opgericht?", antwoord: "1899", hint: "Einde van de 19e eeuw" },
+    { vraag: "Welke Nederlandse aanvaller speelde voor AC Milan in de jaren 90?", antwoord: "marco van basten", hint: "Hij won 3x de Ballon d'Or" },
+    { vraag: "Wie scoorde 10 goals voor Milan in de CL van 2007?", antwoord: "kaka", hint: "Braziliaanse middenvelder" },
+    { vraag: "Tegen welke club won Milan de CL finale van 2003?", antwoord: "juventus", hint: "Een andere Italiaanse club" },
+    { vraag: "Hoeveel jaar speelde Paolo Maldini voor AC Milan?", antwoord: "24", hint: "Meer dan 20 jaar" },
+    { vraag: "In welke stad ligt het stadion van AC Milan?", antwoord: "milaan", hint: "De naam van de club geeft het weg" },
+    { vraag: "Welke kleur shirt draagt AC Milan thuis?", antwoord: "rood zwart", hint: "Twee kleuren in verticale strepen" },
+    { vraag: "Tegen welke club won Milan de CL finale van 2007?", antwoord: "liverpool", hint: "Een Engelse club" },
+    { vraag: "Welke Oekrainse aanvaller won de Ballon d'Or in 2004?", antwoord: "shevchenko", hint: "Hij speelde van 1999 tot 2006 voor Milan" },
+    { vraag: "Hoeveel goals scoorde Van Basten in zijn carrière bij Milan?", antwoord: "200", hint: "Meer dan 150" }
 ];
 
 // Variabelen
 var score = 0;
-var huidigVraagIndex = 0;
-var aantalVragen = 0;
+var huidigIndex = 0;
+var aantalVragen = 5;
 var spelersnaam = "";
 var spelBezig = false;
 var scoreBord = [];
+var gebruikteIndexen = [];
+
+// Functie: surprise knop
+function toonFeitje() {
+    var willekeurig = Math.floor(Math.random() * feitjes.length);
+    document.getElementById("feitje").textContent = feitjes[willekeurig];
+}
+
+// Functie: willekeurige vraag kiezen
+function kiesVraag() {
+    var beschikbaar = [];
+    for (var i = 0; i < vragen.length; i++) {
+        if (gebruikteIndexen.indexOf(i) === -1) {
+            beschikbaar.push(i);
+        }
+    }
+    var willekeurig = beschikbaar[Math.floor(Math.random() * beschikbaar.length)];
+    gebruikteIndexen.push(willekeurig);
+    return willekeurig;
+}
 
 // Functie: quiz starten
 function startQuiz() {
     var naamVeld = document.getElementById("spelersnaam");
     var boodschap = document.getElementById("boodschap");
-    var moeilijkheid = document.getElementById("moeilijkheid").value;
 
     // Controlestructuur: naam controleren
     if (naamVeld.value === "") {
         boodschap.textContent = "Vul eerst je naam in!";
-    } else {
-        spelersnaam = naamVeld.value;
-        score = 0;
-        huidigVraagIndex = 0;
-        spelBezig = true;
-
-        // Aantal vragen instellen op basis van moeilijkheid
-        if (moeilijkheid === "makkelijk") {
-            aantalVragen = 5;
-        } else if (moeilijkheid === "normaal") {
-            aantalVragen = 10;
-        } else {
-            aantalVragen = 15;
-        }
-
-        document.getElementById("score").textContent = "Score: 0";
-        boodschap.textContent = "Welkom " + spelersnaam + "! Beantwoord " + aantalVragen + " vragen!";
-        toonVraag();
+        return;
     }
+
+    spelersnaam = naamVeld.value;
+    score = 0;
+    huidigIndex = 0;
+    spelBezig = true;
+    gebruikteIndexen = [];
+    aantalVragen = parseInt(document.getElementById("aantalVragen").value);
+
+    document.getElementById("score").textContent = "Score: 0";
+    boodschap.textContent = "Welkom " + spelersnaam + "! Beantwoord " + aantalVragen + " vragen!";
+
+    toonVraag();
 }
 
 // Functie: vraag tonen
 function toonVraag() {
-    var hintsAan = document.getElementById("hintsCheckbox").checked;
-    var hint = document.getElementById("hint");
-
     // Controlestructuur: zijn er nog vragen?
-    if (huidigVraagIndex < aantalVragen) {
-        var huidigeVraag = vragen[huidigVraagIndex];
-        document.getElementById("vraagNummer").textContent = "Vraag " + (huidigVraagIndex + 1) + " van " + aantalVragen;
-        document.getElementById("vraag").textContent = huidigeVraag.vraag;
-
-        if (hintsAan) {
-            hint.textContent = "Hint: " + huidigeVraag.hint;
-        } else {
-            hint.textContent = "";
-        }
-    } else {
-        eindSpel();
+    if (huidigIndex >= aantalVragen) {
+        eindQuiz();
+        return;
     }
+
+    var vraagIndex = kiesVraag();
+    var huidigeVraag = vragen[vraagIndex];
+    var hintsAan = document.getElementById("hintsCheckbox").checked;
+
+    document.getElementById("vraagNummer").textContent = "Vraag " + (huidigIndex + 1) + " van " + aantalVragen;
+    document.getElementById("vraag").textContent = huidigeVraag.vraag;
+    document.getElementById("antwoord").dataset.juist = huidigeVraag.antwoord;
+
+    // Hint tonen
+    if (hintsAan) {
+        document.getElementById("hint").textContent = "Hint: " + huidigeVraag.hint;
+    } else {
+        document.getElementById("hint").textContent = "";
+    }
+
+    document.getElementById("antwoord").value = "";
 }
 
 // Functie: antwoord controleren
 function controleerAntwoord() {
-    if (!spelBezig) return;
+    if (!spelBezig) {
+        return;
+    }
 
     var antwoord = document.getElementById("antwoord").value.toLowerCase().trim();
+    var juistAntwoord = document.getElementById("antwoord").dataset.juist;
     var boodschap = document.getElementById("boodschap");
     var scoreElement = document.getElementById("score");
-    var huidigeVraag = vragen[huidigVraagIndex];
 
     // Controlestructuur: juist of fout
-    if (antwoord === huidigeVraag.antwoord) {
+    if (antwoord === juistAntwoord) {
         score = score + 10;
         boodschap.textContent = "Juist! +10 punten!";
         scoreElement.textContent = "Score: " + score;
     } else {
-        boodschap.textContent = "Fout! Het juiste antwoord was: " + huidigeVraag.antwoord;
+        boodschap.textContent = "Fout! Het juiste antwoord was: " + juistAntwoord;
     }
 
-    huidigVraagIndex = huidigVraagIndex + 1;
-    document.getElementById("antwoord").value = "";
+    huidigIndex = huidigIndex + 1;
     toonVraag();
 }
 
-// Functie: einde spel
-function eindSpel() {
+// Functie: einde quiz
+function eindQuiz() {
     spelBezig = false;
-    var moeilijkheid = document.getElementById("moeilijkheid").value;
-    document.getElementById("vraag").textContent = "";
+
     document.getElementById("vraagNummer").textContent = "";
+    document.getElementById("vraag").textContent = "";
     document.getElementById("hint").textContent = "";
-    document.getElementById("boodschap").textContent = "Quiz afgelopen! Jouw score: " + score + " punten!";
+    document.getElementById("boodschap").textContent = spelersnaam + " heeft de quiz afgerond met " + score + " punten!";
 
-    // Speler toevoegen aan scorebord
-    var spelerScore = { naam: spelersnaam, score: score, moeilijkheid: moeilijkheid };
-    scoreBord.push(spelerScore);
+    // Toevoegen aan scorebord
+    scoreBord.push({ naam: spelersnaam, score: score, vragen: aantalVragen });
 
-    // Scorebord sorteren van hoog naar laag
+    // Sorteren van hoog naar laag
     scoreBord.sort(function(a, b) { return b.score - a.score; });
 
-    // Scorebord tonen
     toonScoreBord();
 }
 
@@ -125,31 +155,28 @@ function eindSpel() {
 function toonScoreBord() {
     var tabel = document.getElementById("scoreTabel");
 
-    // Tabel leegmaken behalve de header
+    // Tabel leegmaken behalve header
     while (tabel.rows.length > 1) {
         tabel.deleteRow(1);
     }
 
-    // Elke speler toevoegen aan de tabel
+    // Elke speler toevoegen
     for (var i = 0; i < scoreBord.length; i++) {
         var rij = tabel.insertRow();
-        var rangCell = rij.insertCell();
-        var naamCell = rij.insertCell();
-        var scoreCell = rij.insertCell();
-        var moeilijkheidCell = rij.insertCell();
-
-        rangCell.textContent = i + 1;
-        naamCell.textContent = scoreBord[i].naam;
-        scoreCell.textContent = scoreBord[i].score;
-        moeilijkheidCell.textContent = scoreBord[i].moeilijkheid;
+        rij.insertCell().textContent = i + 1;
+        rij.insertCell().textContent = scoreBord[i].naam;
+        rij.insertCell().textContent = scoreBord[i].score;
+        rij.insertCell().textContent = scoreBord[i].vragen;
     }
 }
 
 // Functie: quiz resetten
 function resetQuiz() {
     score = 0;
-    huidigVraagIndex = 0;
+    huidigIndex = 0;
     spelBezig = false;
+    gebruikteIndexen = [];
+
     document.getElementById("spelersnaam").value = "";
     document.getElementById("antwoord").value = "";
     document.getElementById("boodschap").textContent = "";
@@ -157,7 +184,7 @@ function resetQuiz() {
     document.getElementById("vraag").textContent = "";
     document.getElementById("vraagNummer").textContent = "";
     document.getElementById("hint").textContent = "";
-    document.getElementById("moeilijkheid").value = "makkelijk";
+    document.getElementById("aantalVragen").value = "5";
     document.getElementById("hintsCheckbox").checked = false;
 }
 
@@ -165,3 +192,9 @@ function resetQuiz() {
 document.getElementById("startKnop").addEventListener("click", startQuiz);
 document.getElementById("bevestigKnop").addEventListener("click", controleerAntwoord);
 document.getElementById("resetKnop").addEventListener("click", resetQuiz);
+
+// Surprise knop alleen op homepagina
+var surpriseKnop = document.getElementById("surpriseKnop");
+if (surpriseKnop) {
+    surpriseKnop.addEventListener("click", toonFeitje);
+}
