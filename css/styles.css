@@ -294,3 +294,29 @@ footer th {
         width: 100%;
     }
 }
+/* Lineup tabel */
+.lineup-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.lineup-tabel th {
+    background-color: #cc0000;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.lineup-tabel td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.lineup-tabel tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+.lineup-tabel tr:hover td {
+    background-color: #fff3cd;
+}
