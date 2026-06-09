@@ -6,86 +6,38 @@
     <title>404 — Pagina niet gevonden</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .fout-zone {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .fout-zone h2 {
-            font-size: 8rem;
-            color: #cc0000;
-            margin: 0;
-        }
-        .fout-zone h3 {
-            font-size: 2rem;
-            color: #222;
-            margin: 10px 0;
-        }
-        .fout-zone p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-        }
-        .bal {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at 35% 35%, #fff 0%, #ddd 60%, #aaa 100%);
-            border-radius: 50%;
-            border: 3px solid #222;
-            margin: 30px auto;
-            animation: stuiteren 1s ease-in-out infinite alternate;
-        }
-        @keyframes stuiteren {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-40px); }
-        }
-        .fout-zone a button {
-            font-size: 1.2rem;
-            padding: 15px 30px;
-            margin-top: 20px;
-        }
+        .fout-zone { text-align: center; padding: 60px 20px; }
+        .fout-zone h2 { font-family: 'Bebas Neue', sans-serif; font-size: 8rem; color: #cc0000; margin: 0; letter-spacing: 10px; }
+        .fout-zone h3 { font-size: 1.5rem; color: #e8e8e8; margin: 10px 0; }
+        .fout-zone p { font-size: 1rem; color: #999; margin: 10px 0; }
+        .bal { width: 120px; height: 120px; background: radial-gradient(circle at 35% 35%, #fff 0%, #ddd 60%, #aaa 100%); border-radius: 50%; border: 3px solid #444; margin: 30px auto; animation: stuiteren 1s ease-in-out infinite alternate; }
+        @keyframes stuiteren { 0% { transform: translateY(0); } 100% { transform: translateY(-40px); } }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <img src="media/logo.png" alt="AC Milan Logo">
+        <img src="media/logo.jpg" alt="AC Milan Logo">
         <h1>AC Milan — Champions League</h1>
     </header>
-
-    <!-- Navigatie -->
     <nav>
         <a href="index.html">Home</a>
         <a href="html/spelers.html">Spelers</a>
-        <a href="html/quiz.html">Quiz</a>
+        <a href="html/game.html">Quiz</a>
     </nav>
-
-    <!-- Foutboodschap -->
     <main>
         <div class="fout-zone">
             <h2>404</h2>
             <h3>Pagina niet gevonden!</h3>
             <div class="bal"></div>
             <p>Deze pagina is buiten het veld geschoten...</p>
-            <p>Ga terug naar de hoofdpagina!</p>
             <a href="index.html"><button>Terug naar home</button></a>
         </div>
     </main>
-
-    <!-- Footer -->
     <footer>
         <table>
-            <tr>
-                <th>School</th>
-                <th>Adres</th>
-                <th>Stad</th>
-            </tr>
-            <tr>
-               <td>Campus Het Spoor</td>
-                <td>Begonialaan 34</td>
-                <td>2400 Mol</td>
-            </tr>
+            <tr><th>School</th><th>Adres</th><th>Stad</th></tr>
+            <tr><td>Campus Het Spoor</td><td>Begonialaan 34</td><td>2400 Mol</td></tr>
         </table>
     </footer>
-
 </body>
 </html>
