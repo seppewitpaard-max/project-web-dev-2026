@@ -122,7 +122,7 @@ function toonRandomSpeler() {
     reveal.innerHTML =
         "<h3>" + willekeurig.naam + "</h3>" +
         "<p>" + willekeurig.positie + " &nbsp;·&nbsp; " + willekeurig.periode + "</p>" +
-        "<p style='margin-top:8px;color:#e8e8e8;'>" + willekeurig.feit + "</p>";
+        "<p class='feit'>" + willekeurig.feit + "</p>";
     reveal.classList.add("zichtbaar");
 }
 
@@ -256,11 +256,15 @@ function resetQuiz() {
     document.getElementById("hintsCheckbox").checked = false;
 }
 
-// Knoppen koppelen
-document.getElementById("startKnop").addEventListener("click", startQuiz);
-document.getElementById("bevestigKnop").addEventListener("click", controleerAntwoord);
-document.getElementById("resetKnop").addEventListener("click", resetQuiz);
+// Knoppen koppelen — alleen als ze op de pagina staan
+var startKnop = document.getElementById("startKnop");
+if (startKnop) startKnop.addEventListener("click", startQuiz);
 
-// Surprise knop alleen op homepagina
+var bevestigKnop = document.getElementById("bevestigKnop");
+if (bevestigKnop) bevestigKnop.addEventListener("click", controleerAntwoord);
+
+var resetKnop = document.getElementById("resetKnop");
+if (resetKnop) resetKnop.addEventListener("click", resetQuiz);
+
 var surpriseKnop = document.getElementById("surpriseKnop");
 if (surpriseKnop) surpriseKnop.addEventListener("click", toonRandomSpeler);

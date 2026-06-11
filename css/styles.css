@@ -1,473 +1,200 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --rood: #cc0000;
-    --donkerrood: #8b0000;
-    --goud: #c9a84c;
-    --zwart: #0d0d0d;
-    --donkergrijs: #151515;
-    --grijs: #1e1e1e;
-    --lichtgrijs: #2a2a2a;
-    --tekst: #e8e8e8;
-    --subtekst: #999;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Barlow', sans-serif;
-    background-color: var(--zwart);
-    color: var(--tekst);
-    min-height: 100vh;
+    background: #111;
+    color: #ccc;
 }
 
-/* Header */
+/* HEADER & NAV */
 header {
-    background-color: var(--zwart);
-    border-bottom: 3px solid var(--rood);
-    padding: 0 30px;
+    background: #0a0a0a;
+    border-bottom: 3px solid #cc0000;
+    padding: 12px 25px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    height: 90px;
-    position: relative;
+    gap: 14px;
 }
+header img { height: 55px; width: 55px; object-fit: cover; border-radius: 50%; }
+header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; letter-spacing: 2px; color: #fff; }
 
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0; right: 0;
-    height: 2px;
-    background: var(--goud);
-}
-
-header img {
-    height: 65px;
-    object-fit: contain;
-    border-radius: 4px;
-}
-
-header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem;
-    letter-spacing: 3px;
-    color: white;
-    text-shadow: 0 0 20px rgba(204,0,0,0.5);
-}
-
-/* Nav */
 nav {
-    background-color: var(--donkergrijs);
+    background: #0d0d0d;
     display: flex;
-    gap: 2px;
-    padding: 0 30px;
-    border-bottom: 2px solid var(--lichtgrijs);
+    padding: 0 25px;
+    border-bottom: 1px solid #222;
 }
-
 nav a {
-    color: var(--subtekst);
+    color: #777;
     text-decoration: none;
-    padding: 14px 22px;
-    font-weight: 600;
+    padding: 13px 18px;
+    font-weight: 700;
     font-size: 0.85rem;
-    letter-spacing: 1.5px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     border-bottom: 3px solid transparent;
-    transition: all 0.2s;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
 }
+nav a:hover, nav a.actief { color: #fff; border-bottom-color: #cc0000; }
 
-nav a:hover, nav a.actief {
-    color: white;
-    border-bottom-color: var(--rood);
-}
+/* LAYOUT */
+main { max-width: 960px; margin: 0 auto; padding: 25px 20px; }
 
-/* Main */
-main {
-    padding: 30px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Kaart */
-.kaart {
-    background-color: var(--donkergrijs);
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 20px;
-    border: 1px solid var(--lichtgrijs);
-    border-left: 4px solid var(--rood);
-}
-
-.kaart h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 2px;
-    color: var(--rood);
-    margin-bottom: 15px;
-}
-
-.kaart h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 1.5px;
-    color: var(--rood);
-    margin-bottom: 15px;
-}
-
-.kaart p {
-    margin-bottom: 10px;
-    line-height: 1.7;
-    color: var(--tekst);
-}
-
-/* Speler grid */
-.speler-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.speler-kaart {
-    background-color: var(--donkergrijs);
-    border-radius: 8px;
-    padding: 18px;
-    border: 1px solid var(--lichtgrijs);
-    border-top: 3px solid var(--rood);
-    transition: border-color 0.2s, transform 0.2s;
-}
-
-.speler-kaart:hover {
-    border-top-color: var(--goud);
-    transform: translateY(-2px);
-}
-
-.speler-kaart h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    color: var(--rood);
-    margin-bottom: 10px;
-}
-
-.speler-kaart p {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: var(--subtekst);
-    line-height: 1.5;
-}
-
-.speler-kaart p:first-of-type {
-    color: var(--tekst);
-    font-weight: 600;
-}
-
-/* Quiz zone */
-#vraagNummer {
-    color: var(--goud);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-#vraag {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: white;
-    line-height: 1.4;
-}
-
-#hint {
-    color: var(--goud);
-    font-style: italic;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-}
-
-#boodschap {
-    font-weight: 600;
-    margin-top: 10px;
-    font-size: 0.95rem;
-}
-
-#boodschap.juist { color: #4caf50; }
-#boodschap.fout { color: var(--rood); }
-#boodschap:not(.juist):not(.fout) { color: var(--goud); }
-
-#score {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    color: white;
-    margin-top: 10px;
-}
-
-#feitje {
-    margin-top: 15px;
-    font-weight: 600;
-    color: var(--goud);
-    font-size: 1rem;
-    line-height: 1.6;
-    padding: 12px 16px;
-    background: rgba(201,168,76,0.08);
-    border-left: 3px solid var(--goud);
-    border-radius: 0 6px 6px 0;
-    display: none;
-}
-
-#feitje.zichtbaar { display: block; }
-
-/* Speler reveal */
-#spelerReveal {
-    margin-top: 15px;
-    padding: 16px 20px;
-    background: rgba(204,0,0,0.08);
-    border-left: 3px solid var(--rood);
-    border-radius: 0 6px 6px 0;
-    display: none;
-}
-
-#spelerReveal.zichtbaar { display: block; }
-#spelerReveal h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    color: var(--rood);
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-}
-#spelerReveal p { color: var(--subtekst); font-size: 0.9rem; margin-bottom: 3px; }
-
-/* Formulier */
-label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--subtekst);
-    margin: 14px 0 6px;
-}
-
-input[type="text"], select {
-    display: block;
-    margin: 0 0 10px;
-    padding: 11px 14px;
-    font-size: 1rem;
-    font-family: 'Barlow', sans-serif;
-    width: 100%;
-    max-width: 400px;
-    background: var(--grijs);
-    color: var(--tekst);
-    border: 1px solid var(--lichtgrijs);
-    border-radius: 5px;
-    transition: border-color 0.2s;
-}
-
-input[type="text"]:focus, select:focus {
-    outline: none;
-    border-color: var(--rood);
-}
-
-input[type="checkbox"] {
-    accent-color: var(--rood);
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-select option { background: var(--grijs); }
-
-button {
-    display: inline-block;
-    margin: 10px 6px 10px 0;
-    padding: 11px 24px;
-    font-size: 0.9rem;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    background: var(--rood);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-}
-
-button:hover {
-    background: var(--donkerrood);
-    transform: scale(1.03);
-}
-
-button.goud {
-    background: transparent;
-    border: 1px solid var(--goud);
-    color: var(--goud);
-}
-
-button.goud:hover {
-    background: rgba(201,168,76,0.1);
-}
-
-/* Scoretabel */
-#scoreTabel {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-#scoreTabel th {
-    background-color: var(--rood);
-    color: white;
-    padding: 12px 14px;
-    text-align: left;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-#scoreTabel td {
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--lichtgrijs);
-    color: var(--tekst);
-    font-size: 0.95rem;
-}
-
-#scoreTabel tr:nth-child(2) td {
-    background-color: rgba(201,168,76,0.08);
-    color: var(--goud);
-    font-weight: 700;
-}
-
-#scoreTabel tr:hover td { background-color: var(--lichtgrijs); }
-
-/* Footer */
-footer {
-    background-color: var(--donkergrijs);
-    border-top: 3px solid var(--rood);
-    padding: 20px 30px;
-    margin-top: 40px;
-}
-
-footer table {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-footer th, footer td {
-    border: 1px solid var(--lichtgrijs);
-    padding: 9px 12px;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-footer th {
-    color: var(--subtekst);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
-footer td { color: var(--tekst); }
-
-/* Lineup tabel */
-.lineup-tabel {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.lineup-tabel th {
-    background-color: var(--rood);
-    color: white;
-    padding: 10px 12px;
-    text-align: left;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.lineup-tabel td {
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--lichtgrijs);
-    color: var(--tekst);
-    font-size: 0.9rem;
-}
-
-.lineup-tabel tr:nth-child(even) td { background-color: rgba(255,255,255,0.02); }
-.lineup-tabel tr:hover td { background-color: var(--lichtgrijs); }
-
-/* Hero banner op homepagina */
-.hero {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    position: relative;
-    height: 280px;
-}
-
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-}
-
+/* HERO */
+.hero { position: relative; height: 260px; border-radius: 5px; overflow: hidden; margin-bottom: 16px; }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: brightness(0.55); }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.2) 60%, transparent 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 70%);
     display: flex;
-    align-items: center;
-    padding: 30px;
+    align-items: flex-end;
+    padding: 25px;
 }
+.hero-tekst h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; letter-spacing: 4px; color: #fff; line-height: 1; }
+.hero-tekst p  { font-size: 0.9rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #fff; margin-top: 5px; }
 
-.hero-tekst h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    letter-spacing: 4px;
-    color: white;
-    line-height: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+/* KAARTEN */
+.kaart {
+    background: #181818;
+    border-radius: 5px;
+    padding: 22px;
+    margin-bottom: 16px;
+    border: 1px solid #242424;
+    border-left: 3px solid #cc0000;
 }
+.kaart h2, .kaart h3 { font-family: 'Bebas Neue', sans-serif; color: #cc0000; margin-bottom: 12px; }
+.kaart h2 { font-size: 1.45rem; letter-spacing: 1.5px; }
+.kaart h3 { font-size: 1.3rem; }
+.kaart p  { color: #bbb; line-height: 1.65; margin-bottom: 8px; font-size: 0.95rem; }
 
-.hero-tekst p {
-    color: var(--goud);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+/* SPELERS */
+.speler-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px; }
+.speler-kaart {
+    background: #181818;
+    border-radius: 5px;
+    padding: 16px;
+    border: 1px solid #242424;
+    border-top: 2px solid #cc0000;
+    transition: border-top-color 0.2s, transform 0.15s;
+}
+.speler-kaart:hover { border-top-color: #ff3333; transform: translateY(-2px); }
+.speler-kaart h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: #e0e0e0; margin-bottom: 7px; }
+.speler-kaart p  { font-size: 0.85rem; color: #666; margin-bottom: 3px; line-height: 1.5; }
+
+/* FORMULIER */
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-top: 8px;
+    color: #666;
+    margin: 12px 0 5px;
 }
+input[type="text"], select {
+    display: block;
+    padding: 9px 12px;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 380px;
+    background: #111;
+    color: #ddd;
+    border: 1px solid #2e2e2e;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: border-color 0.2s;
+}
+input[type="text"]:focus, select:focus { outline: none; border-color: #cc0000; }
+input[type="checkbox"] { accent-color: #cc0000; width: 15px; height: 15px; cursor: pointer; margin-right: 6px; vertical-align: middle; }
+select option { background: #181818; }
 
-/* Responsive */
+button {
+    padding: 9px 22px;
+    margin: 10px 6px 4px 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #cc0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover { background: #a80000; }
+button.secundair { background: transparent; border: 1px solid #333; color: #666; }
+button.secundair:hover { border-color: #555; color: #aaa; background: transparent; }
+
+/* QUIZ */
+#vraagNummer { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 8px; }
+#vraag       { font-size: 1.15rem; font-weight: 600; color: #eee; margin-bottom: 14px; }
+#hint        { font-size: 0.88rem; color: #aaa; font-style: italic; margin-bottom: 12px; }
+#score       { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: #ccc; margin-top: 8px; }
+
+#boodschap { font-size: 0.9rem; font-weight: 600; margin-top: 10px; }
+#boodschap.juist { color: #5a9e5a; }
+#boodschap.fout  { color: #cc0000; }
+#boodschap:not(.juist):not(.fout) { color: #aaa; }
+
+#spelerReveal {
+    display: none;
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: #141414;
+    border-left: 3px solid #cc0000;
+    border-radius: 0 4px 4px 0;
+}
+#spelerReveal.zichtbaar { display: block; }
+#spelerReveal h3   { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #cc0000; margin-bottom: 5px; }
+#spelerReveal p    { font-size: 0.88rem; color: #777; margin-bottom: 3px; }
+#spelerReveal p.feit { color: #bbb; margin-top: 6px; }
+
+/* TABELLEN */
+#scoreTabel, .lineup-tabel { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
+
+#scoreTabel th, .lineup-tabel th {
+    background: #cc0000;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+#scoreTabel td, .lineup-tabel td { padding: 9px 12px; border-bottom: 1px solid #1e1e1e; color: #bbb; }
+#scoreTabel tr:nth-child(2) td   { color: #fff; font-weight: 700; }
+#scoreTabel tr:hover td, .lineup-tabel tr:hover td { background: #1e1e1e; }
+
+/* FOOTER */
+footer {
+    background: #0a0a0a;
+    border-top: 2px solid #cc0000;
+    padding: 18px 25px;
+    margin-top: 40px;
+}
+footer table { width: 100%; max-width: 960px; margin: 0 auto; border-collapse: collapse; }
+footer th, footer td { border: 1px solid #1e1e1e; padding: 8px 12px; font-size: 0.85rem; }
+footer th { color: #555; font-size: 0.75rem; text-transform: uppercase; }
+footer td { color: #777; }
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    header h1 { font-size: 1.4rem; }
+    header h1 { font-size: 1.3rem; }
     nav { flex-direction: column; padding: 0; }
-    nav a { border-bottom: 1px solid var(--lichtgrijs); border-left: 3px solid transparent; padding: 12px 20px; }
-    nav a:hover { border-left-color: var(--rood); border-bottom-color: var(--lichtgrijs); }
+    nav a { padding: 11px 20px; border-bottom: 1px solid #1a1a1a; border-left: 3px solid transparent; }
+    nav a:hover, nav a.actief { border-left-color: #cc0000; border-bottom-color: #1a1a1a; }
     .speler-grid { grid-template-columns: repeat(2, 1fr); }
-    main { padding: 20px 15px; }
 }
-
 @media (max-width: 480px) {
-    header { flex-direction: column; text-align: center; height: auto; padding: 15px; }
+    header { flex-direction: column; text-align: center; padding: 15px; }
     .speler-grid { grid-template-columns: 1fr; }
     input[type="text"], select, button { max-width: 100%; width: 100%; }
-    .hero { height: 200px; }
-    .hero-tekst h2 { font-size: 2rem; }
+    .hero { height: 180px; }
+    .hero-tekst h2 { font-size: 2.4rem; }
 }
